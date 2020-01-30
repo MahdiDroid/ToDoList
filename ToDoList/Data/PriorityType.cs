@@ -7,10 +7,7 @@ namespace ToDoList.Data
 {
     public class PriorityType
     {
-        public string Low { get; set; } = "Low";
-        public string Medium { get; set; } = "Medium";
-
-        public string High { get; set; } = "High";
-
+        public int Id { get; set; }
+        public string Name { get; set; }
     }
 }
