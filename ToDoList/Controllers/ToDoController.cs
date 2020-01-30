@@ -33,7 +33,7 @@ namespace ToDoList.Controllers
 
             var priorityTypeVm = new PriorityTypeViewModel
             {
-                PriorityType = pt
+                PriorityType = pt,
             };
             return View(priorityTypeVm);
 
