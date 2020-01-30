@@ -14,7 +14,10 @@ namespace ToDoList.Controllers
         {
             _db = new ToDoContext();
         }
-
+        protected override void Dispose(bool disposing)
+        {
+            _db.Dispose();
+        }
         public ActionResult Index()
         {
             var toDos = _db.ToDos.Include(t => t.PriorityType).ToList();
