@@ -15,7 +15,5 @@ namespace ToDoList.Data
         public int PriorityTypeId { get; set; }
         public PriorityType PriorityType { get; set; }
 
-
-
     }
 }
