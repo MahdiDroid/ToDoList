@@ -41,6 +41,9 @@ namespace ToDoList.Controllers
         [HttpPost]
         public ActionResult Save(ToDo todo)
         {
+            todo.Date = DateTime.Now;
+            todo.IsDone = false;
+
             _db.ToDos.Add(todo);
             _db.SaveChanges();
             return RedirectToAction("Index", "ToDo");
