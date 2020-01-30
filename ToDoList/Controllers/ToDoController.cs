@@ -29,12 +29,11 @@ namespace ToDoList.Controllers
        
         public ActionResult New()
         {
-
             var priorityTypeVm = new PriorityTypeViewModel
             {
                 PriorityType = _db.PriorityTypes.ToList()
             };
-            return View(priorityTypeVm);
+            return View();
 
         }
         [HttpPost]
