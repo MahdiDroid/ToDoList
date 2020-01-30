@@ -9,5 +9,6 @@ namespace ToDoList.ViewModel
     public class PriorityTypeViewModel
     {
         public IEnumerable<PriorityType> PriorityType { get; set; }
+        public ToDo Todo { get; set; }
     }
 }
