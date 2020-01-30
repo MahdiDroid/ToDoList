@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Data.Entity;
 using ToDoList.Data;
+using ToDoList.ViewModel;
 
 namespace ToDoList.Controllers
 {
@@ -25,12 +26,24 @@ namespace ToDoList.Controllers
             
             return View(toDos);
         }
+       
+        public ActionResult New()
+        {
+
+            var priorityTypeVm = new PriorityTypeViewModel
+            {
+                PriorityType = _db.PriorityTypes.ToList()
+            };
+            return View(priorityTypeVm);
+
+        }
         [HttpPost]
-        public ActionResult Add(ToDo todo)
+        public ActionResult Save(ToDo todo)
         {
             _db.ToDos.Add(todo);
             _db.SaveChanges();
             return RedirectToAction("Index", "ToDo");
+
         }
     }
 }
