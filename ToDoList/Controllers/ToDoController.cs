@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Data.Entity;
+using ToDoList.Data;
 
 namespace ToDoList.Controllers
 {
@@ -23,6 +24,13 @@ namespace ToDoList.Controllers
             var toDos = _db.ToDos.Include(t => t.PriorityType).ToList();
             
             return View(toDos);
+        }
+        [HttpPost]
+        public ActionResult Add(ToDo todo)
+        {
+            _db.ToDos.Add(todo);
+            _db.SaveChanges();
+            return RedirectToAction("Index", "ToDo");
         }
     }
 }
