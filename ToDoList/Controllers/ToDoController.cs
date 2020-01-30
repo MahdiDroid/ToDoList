@@ -47,6 +47,15 @@ namespace ToDoList.Controllers
             _db.ToDos.Add(todo);
             _db.SaveChanges();
             return RedirectToAction("Index", "ToDo");
+        }
+
+        public ActionResult UpdateIsDoneStatus(int id)
+        {
+            var todoInDb = _db.ToDos.SingleOrDefault(t => t.Id == id);
+            todoInDb.IsDone = true;
+            _db.SaveChanges();
+
+            return RedirectToAction("Index", "ToDo");
 
         }
     }
