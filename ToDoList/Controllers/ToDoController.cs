@@ -27,7 +27,7 @@ namespace ToDoList.Controllers
             return View(toDos);
         }
        
-        public ActionResult New()
+        public ActionResult Create()
         {
             var  pt = _db.PriorityTypes.ToList();
 
