@@ -41,7 +41,7 @@ namespace ToDoList.Controllers
         [HttpPost]
         public ActionResult Save(ToDo todo)
         {
-            todo.Date = DateTime.Now;
+          //  todo.Date = DateTime.Now;
             todo.IsDone = false;
 
             _db.ToDos.Add(todo);
