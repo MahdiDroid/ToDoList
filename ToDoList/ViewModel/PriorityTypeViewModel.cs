@@ -8,6 +8,6 @@ namespace ToDoList.ViewModel
 {
     public class PriorityTypeViewModel
     {
-        public List<PriorityType> PriorityType { get; set; }
+        public IEnumerable<PriorityType> PriorityType { get; set; }
     }
 }
