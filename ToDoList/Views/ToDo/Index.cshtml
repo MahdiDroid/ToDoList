@@ -1,11 +1,11 @@
-﻿@model ToDoList.Data.ToDo
+﻿@model IEnumerable<ToDoList.Data.ToDo>
 @{
     ViewBag.Title = "Index";
 }
 
 <h2>To Do</h2>
 
-<table>
+<table class="table">
     <thead>
         <tr>
             <td>Title</td>
@@ -15,10 +15,11 @@
     </thead>
     @foreach (var todo in Model)
     {
+       
         <tbody>
             <tr>
                 <td>@todo.Title</td>
-               @* <td>@todo.</td>*@
+                <td>@todo.PriorityType</td>
                 <td>@todo.IsDone</td>
             </tr>
         </tbody>

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Data.Entity;
 
 namespace ToDoList.Controllers
 {
@@ -16,7 +17,8 @@ namespace ToDoList.Controllers
 
         public ActionResult Index()
         {
-            var toDos = _db.ToDos.ToList();
+            var toDos = _db.ToDos.Include(t => t.PriorityType).ToList();
+            
             return View(toDos);
         }
     }
