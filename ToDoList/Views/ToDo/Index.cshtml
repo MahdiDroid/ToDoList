@@ -3,25 +3,42 @@
     ViewBag.Title = "Index";
 }
 
-<h2>To Do</h2>
-<a href="ToDo/New" class="btn btn-info" role="button">+NewTodo</a>
-<table class="table">
-    <thead>
-        <tr>
-            <td>Title</td>
-            <td>Priority</td>
-            <td>Status</td>
-        </tr>
-    </thead>
-    @foreach (var todo in Model)
-    {
-       
-        <tbody>
+
+
+<html>
+<head>
+    <title>ToDo</title>
+</head>
+<body>
+    <h2>To Do</h2>
+    <a href="ToDo/New" class="btn btn-info" role="button">+NewTodo</a>
+    <table class="table table-hover">
+        <thead>
             <tr>
-                <td>@todo.Title</td>
-                <td>@todo.PriorityType.Name</td>
-                <td>@todo.IsDone</td>
+                <td>Title</td>
+                <td>Priority</td>
+                <td>Status</td>
             </tr>
-        </tbody>
-    }
-</table>
+        </thead>
+        @foreach (var todo in Model)
+        {
+
+            <tbody>
+                <tr>
+                    <td>@todo.Title</td>
+                    <td>@todo.PriorityType.Name</td>
+                    <td>@todo.IsDone</td>
+                    <td >
+                    <div class="form-check">
+                     <label>
+                           <input type="checkbox"   id="ToDo.IsDone" name="ToDo.IsDone" value="@todo.IsDone">Done<input />
+                         
+                     </label>
+                    </div></td>
+
+                </tr>
+            </tbody>
+        }
+    </table>
+</body>
+</html>
