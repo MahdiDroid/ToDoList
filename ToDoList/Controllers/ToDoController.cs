@@ -49,6 +49,7 @@ namespace ToDoList.Controllers
             return RedirectToAction("Index", "ToDo");
         }
 
+        [HttpPut]
         public ActionResult UpdateIsDoneStatus(int id)
         {
             var todoInDb = _db.ToDos.SingleOrDefault(t => t.Id == id);
