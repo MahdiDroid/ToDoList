@@ -137,6 +137,10 @@
     <Compile Include="Migrations\202001301402452_initial.designer.cs">
       <DependentUpon>202001301402452_initial.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202001301413433_Seeding.cs" />
+    <Compile Include="Migrations\202001301413433_Seeding.designer.cs">
+      <DependentUpon>202001301413433_Seeding.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ToDoContext.cs" />
@@ -198,6 +202,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202001301402452_initial.resx">
       <DependentUpon>202001301402452_initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202001301413433_Seeding.resx">
+      <DependentUpon>202001301413433_Seeding.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
