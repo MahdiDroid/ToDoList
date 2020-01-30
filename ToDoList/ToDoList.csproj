@@ -141,6 +141,10 @@
     <Compile Include="Migrations\202001301413433_Seeding.designer.cs">
       <DependentUpon>202001301413433_Seeding.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202001301433215_SeedingToDoTable.cs" />
+    <Compile Include="Migrations\202001301433215_SeedingToDoTable.designer.cs">
+      <DependentUpon>202001301433215_SeedingToDoTable.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ToDoContext.cs" />
@@ -205,6 +209,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202001301413433_Seeding.resx">
       <DependentUpon>202001301413433_Seeding.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202001301433215_SeedingToDoTable.resx">
+      <DependentUpon>202001301433215_SeedingToDoTable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
