@@ -1,7 +1,43 @@
-﻿
+﻿@*@model IEnumerable<ToDoList.ViewModel.PriorityTypeViewModel>*@
+@model ToDoList.ViewModel.PriorityTypeViewModel
 @{
-    ViewBag.Title = "update";
+    ViewBag.Title = "Update";
 }
 
-<h2>update</h2>
+<h2>Update</h2>
 
+<form action="./Todo/Update" method="post">
+
+    <div class="form-group">
+        <label for="title">Title</label>
+        <input type="text" class="form-control" name="ToDo.Title" id="ToDo.title" aria-describedby="titleHelp" placeholder="Enter Title">
+        @*<small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>*@
+    </div>
+
+    <div class="form-group">
+        <label for="title">Date</label>
+        <input type="text" class="form-control" name="ToDo.Date" id="ToDo.Date" aria-describedby="DateHelp" placeholder="Enter Date">
+        @*<small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>*@
+    </div>
+
+    <div class="form-group">
+        <label for="PriorityTypeId">Priority</label>
+        <select name="ToDo.PriorityTypeId" class="form-control" id="PriorityTypeId">
+            @foreach (var type in Model.PriorityType)
+            {
+                <option value="@type.Id">@type.Name</option>
+
+            }
+
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label for="description">Description</label>
+        <input type="text" class="form-control" name="ToDo.Description" id="description" aria-describedby="descriptionHelp" placeholder="Enter Description">
+        @*<small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>*@
+    </div>
+    @Html.HiddenFor(t => t.Todo.Id)
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>

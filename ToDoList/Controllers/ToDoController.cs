@@ -16,16 +16,14 @@ namespace ToDoList.Controllers
         {
             _db = new ToDoContext();
         }
-        protected override void Dispose(bool disposing)
-        {
-            _db.Dispose();
-        }
+
         public ActionResult Index()
         {
             var toDos = _db.ToDos.Include(t => t.PriorityType).ToList();
             
             return View(toDos);
         }
+
         [HttpGet]
         public ActionResult Details(int id)
         {
@@ -77,15 +75,7 @@ namespace ToDoList.Controllers
             return RedirectToAction("Index", "ToDo");
         }
 
-        [HttpPut]
-        public ActionResult UpdateIsDoneStatus(int id)
-        {
-            var todoInDb = _db.ToDos.SingleOrDefault(t => t.Id == id);
-            todoInDb.IsDone = true;
-            _db.SaveChanges();
 
-            return RedirectToAction("Index", "ToDo");
-        }
 
         [HttpGet]
         public ActionResult Update(int id)
@@ -97,6 +87,16 @@ namespace ToDoList.Controllers
             }
             return View("Create",todoInDb);
 
+        }
+
+        [HttpPut]
+        public ActionResult UpdateIsDoneStatus(int id)
+        {
+            var todoInDb = _db.ToDos.SingleOrDefault(t => t.Id == id);
+            todoInDb.IsDone = true;
+            _db.SaveChanges();
+
+            return RedirectToAction("Index", "ToDo");
         }
         //public ActionResult Edit(int id)
         //{
@@ -112,5 +112,9 @@ namespace ToDoList.Controllers
         //    }
         //    return ()
         //}
+    }
+    protected override void Dispose(bool disposing)
+    {
+        _db.Dispose();
     }
 }
