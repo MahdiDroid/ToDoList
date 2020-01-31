@@ -191,6 +191,7 @@
     <Content Include="Views\ToDo\Create.cshtml" />
     <Content Include="Views\ToDo\Details.cshtml" />
     <Content Include="Views\ToDo\Update.cshtml" />
+    <Content Include="Views\ToDo\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

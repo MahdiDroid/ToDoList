@@ -76,7 +76,7 @@ namespace ToDoList.Controllers
             return View(priorityTypeVm);
 
         }
-        [HttpPut]
+        [HttpPost]
         public ActionResult Update(ToDo todo)
         {
             var todoInDb = _db.ToDos.Include(t=>t.PriorityType).SingleOrDefault(t => t.Id == todo.Id);
@@ -100,9 +100,16 @@ namespace ToDoList.Controllers
 
             return RedirectToAction("Index", "ToDo");
         }
+        
+        public ActionResult Delete(int id)
+        {
+            var todo = _db.ToDos.Include(t=>t.PriorityType).SingleOrDefault(t => t.Id == id);
+
+            return View(todo);
+        }
 
         [HttpDelete]
-        public ActionResult Delete(int id)
+        public ActionResult Remove(int id)
         {
             var todoToDelete = _db.ToDos.SingleOrDefault(t => t.Id == id);
             _db.ToDos.Remove(todoToDelete);

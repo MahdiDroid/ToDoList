@@ -1,0 +1,29 @@
+﻿@model ToDoList.Data.ToDo
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Are you Sure you want to Delete?</h2>
+
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h1>Details</h1>
+
+<ul>
+    <li> @Model.Title</li>
+    <li> @Model.PriorityType.Name</li>
+    <li> @Model.IsDone</li>
+    <li> @Model.Description</li>
+    <li> @Model.Date</li>
+
+</ul>
+<form action="~/ToDO/Remove" method="post">
+
+    @Html.HiddenFor(t => t.Id)
+
+   <button type="submit" class="btn btn-primary">Delete</button>
+</form>
+@*<a href="~/ToDo/Delete/@Model.Id" class="btn btn-danger" role="button">Delete</a>*@
