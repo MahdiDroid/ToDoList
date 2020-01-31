@@ -22,7 +22,7 @@
 
     <div class="form-group">
         <label for="PriorityTypeId">Priority</label>
-        <select  name="ToDo.PriorityTypeId" class="form-control" id="PriorityTypeId">
+        <select  name="@Model.Todo.PriorityTypeId" class="form-control" id="PriorityTypeId">
             @foreach (var type in Model.PriorityType)
             {
             <option value="@type.Id">@type.Name</option>

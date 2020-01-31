@@ -91,6 +91,7 @@ namespace ToDoList.Controllers
             return RedirectToAction("Index","ToDo");
 
         }
+
         [HttpPut]
         public ActionResult UpdateIsDoneStatus(int id)
         {
@@ -108,7 +109,7 @@ namespace ToDoList.Controllers
             return View(todo);
         }
 
-        [HttpDelete]
+        [HttpPost]
         public ActionResult Remove(int id)
         {
             var todoToDelete = _db.ToDos.SingleOrDefault(t => t.Id == id);
