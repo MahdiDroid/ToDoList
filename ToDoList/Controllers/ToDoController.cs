@@ -95,7 +95,7 @@ namespace ToDoList.Controllers
             {
                 HttpNotFound();
             }
-            return View(todoInDb);
+            return View("save",todoInDb);
 
         }
         //public ActionResult Edit(int id)
