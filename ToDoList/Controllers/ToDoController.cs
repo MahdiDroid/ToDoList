@@ -85,10 +85,34 @@ namespace ToDoList.Controllers
             {
                 HttpNotFound();
             }
-            return View("Create",todoInDb);
+
+            var pt = _db.PriorityTypes.ToList();
+            var priorityTypeVm = new PriorityTypeViewModel
+            {
+                Todo= todoInDb,
+                PriorityType = pt,
+            };
+            return View(priorityTypeVm);
 
         }
+        [HttpPut]
+        public ActionResult Update(int id)
+        {
+            var todoInDb = _db.ToDos.SingleOrDefault(t => t.Id == id);
+            if (todoInDb == null)
+            {
+                HttpNotFound();
+            }
 
+            var pt = _db.PriorityTypes.ToList();
+            var priorityTypeVm = new PriorityTypeViewModel
+            {
+                Todo = todoInDb,
+                PriorityType = pt,
+            };
+            return View(priorityTypeVm);
+
+        }
         [HttpPut]
         public ActionResult UpdateIsDoneStatus(int id)
         {
@@ -112,9 +136,10 @@ namespace ToDoList.Controllers
         //    }
         //    return ()
         //}
+        protected override void Dispose(bool disposing)
+        {
+            _db.Dispose();
+        }
     }
-    protected override void Dispose(bool disposing)
-    {
-        _db.Dispose();
-    }
+
 }
