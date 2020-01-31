@@ -48,7 +48,7 @@ namespace ToDoList.Controllers
         }
 
         [HttpPost]
-        public ActionResult Save(ToDo todo)
+        public ActionResult Create(ToDo todo)
         {
             if (todo.Id==0)
             {   
@@ -88,14 +88,14 @@ namespace ToDoList.Controllers
         }
 
         [HttpGet]
-        public ActionResult update(int id)
+        public ActionResult Update(int id)
         {
             var todoInDb = _db.ToDos.SingleOrDefault(t => t.Id == id);
             if (todoInDb == null)
             {
                 HttpNotFound();
             }
-            return View("save",todoInDb);
+            return View("Create",todoInDb);
 
         }
         //public ActionResult Edit(int id)
