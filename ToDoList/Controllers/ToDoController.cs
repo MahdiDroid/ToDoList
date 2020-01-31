@@ -50,10 +50,29 @@ namespace ToDoList.Controllers
         [HttpPost]
         public ActionResult Save(ToDo todo)
         {
-          //  todo.Date = DateTime.Now;
-            todo.IsDone = false;
+            if (todo.Id==0)
+            {   
+                todo.IsDone = false;
 
-            _db.ToDos.Add(todo);
+                _db.ToDos.Add(todo);
+
+            }
+            else
+            {
+                var todoInDb = _db.ToDos.Include(t => t.PriorityType).SingleOrDefault(t => t.Id == todo.Id);
+
+                todoInDb.Title = todo.Title;
+                todoInDb.IsDone = todo.IsDone;
+                todoInDb.Description = todo.Description;
+                todoInDb.Date = todo.Date;
+                todoInDb.PriorityTypeId = todo.PriorityTypeId;
+
+
+                _db.ToDos.Add(todo);
+            }
+
+
+
             _db.SaveChanges();
             return RedirectToAction("Index", "ToDo");
         }
@@ -66,8 +85,8 @@ namespace ToDoList.Controllers
             _db.SaveChanges();
 
             return RedirectToAction("Index", "ToDo");
-
         }
+
         [HttpGet]
         public ActionResult update(int id)
         {
