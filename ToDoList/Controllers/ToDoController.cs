@@ -48,24 +48,9 @@ namespace ToDoList.Controllers
         [HttpPost]
         public ActionResult Create(ToDo todo)
         {
-            if (todo.Id==0)
-            {   
-                todo.IsDone = false;
-
-                _db.ToDos.Add(todo);
-
-            }
-            else
-            {
-                var todoInDb = _db.ToDos.Include(t => t.PriorityType).SingleOrDefault(t => t.Id == todo.Id);
-
-
-
-
-                _db.ToDos.Add(todo);
-            }
-
-
+            
+            todo.IsDone = false;
+            _db.ToDos.Add(todo);
 
             _db.SaveChanges();
             return RedirectToAction("Index", "ToDo");
@@ -115,20 +100,16 @@ namespace ToDoList.Controllers
 
             return RedirectToAction("Index", "ToDo");
         }
-        //public ActionResult Edit(int id)
-        //{
-        //    var todoIndb = _db.ToDos.SingleOrDefault(t => t.Id == id);
-        //    if(todoIndb == null)
-        //    {
-        //        return HttpNotFound();
-        //    }
-        //    var  viewModel = new PriorityTypeViewModel
-        //    {
-        //        Todo = todoIndb,
-        //        PriorityType=_db.PriorityTypes.ToList()
-        //    }
-        //    return ()
-        //}
+
+        [HttpDelete]
+        public ActionResult Delete(int id)
+        {
+            var todoToDelete = _db.ToDos.SingleOrDefault(t => t.Id == id);
+            _db.ToDos.Remove(todoToDelete);
+            _db.SaveChanges();
+            return RedirectToAction("Index", "ToDO");
+        }
+            
         protected override void Dispose(bool disposing)
         {
             _db.Dispose();
