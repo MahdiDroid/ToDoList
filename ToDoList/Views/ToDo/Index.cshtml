@@ -11,7 +11,7 @@
 </head>
 <body>
     <h2>To Do</h2>
-    <a href="/ToDo/Create" class="btn btn-info" role="button">AddNewTodo</a>
+    <a href="./ToDo/Create" class="btn btn-info" role="button">AddNewTodo</a>
     <table class="table table-hover">
         <thead>
             <tr>
@@ -30,6 +30,8 @@
                     <td>@todo.PriorityType.Name</td>
                     <td>@todo.Date</td>
                     <td>@todo.IsDone</td>
+                    <td><a href="./ToDo/Details/@todo.Id">Details</a></td>
+
                     <td>
                         <div class="form-check">
                             <label>

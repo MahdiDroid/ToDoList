@@ -1,0 +1,15 @@
+﻿@model ToDoList.Data.ToDo
+@{
+    ViewBag.Title = "Details";
+}
+
+<h1>Details</h1>
+
+<ul>
+    <li> @Model.Title</li>
+    <li> @Model.PriorityType.Name</li>
+    <li> @Model.IsDone</li>
+    <li> @Model.Description</li>
+    <li> @Model.Date</li>
+
+</ul>

@@ -26,7 +26,16 @@ namespace ToDoList.Controllers
             
             return View(toDos);
         }
-       
+        [HttpGet]
+        public ActionResult Details(int id)
+        {
+            var todoInDb = _db.ToDos.Include(t => t.PriorityType).SingleOrDefault(t => t.Id == id);
+            
+            return View(todoInDb);
+        }
+
+
+       [HttpGet]
         public ActionResult Create()
         {
             var  pt = _db.PriorityTypes.ToList();
@@ -36,8 +45,8 @@ namespace ToDoList.Controllers
                 PriorityType = pt,
             };
             return View(priorityTypeVm);
-
         }
+
         [HttpPost]
         public ActionResult Save(ToDo todo)
         {
@@ -59,5 +68,30 @@ namespace ToDoList.Controllers
             return RedirectToAction("Index", "ToDo");
 
         }
+        [HttpGet]
+        public ActionResult update(int id)
+        {
+            var todoInDb = _db.ToDos.SingleOrDefault(t => t.Id == id);
+            if (todoInDb == null)
+            {
+                HttpNotFound();
+            }
+            return View(todoInDb);
+
+        }
+        //public ActionResult Edit(int id)
+        //{
+        //    var todoIndb = _db.ToDos.SingleOrDefault(t => t.Id == id);
+        //    if(todoIndb == null)
+        //    {
+        //        return HttpNotFound();
+        //    }
+        //    var  viewModel = new PriorityTypeViewModel
+        //    {
+        //        Todo = todoIndb,
+        //        PriorityType=_db.PriorityTypes.ToList()
+        //    }
+        //    return ()
+        //}
     }
 }
