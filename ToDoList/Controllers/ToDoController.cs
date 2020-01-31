@@ -79,7 +79,7 @@ namespace ToDoList.Controllers
         [HttpPost]
         public ActionResult Update(ToDo todo)
         {
-            var todoInDb = _db.ToDos.Include(t=>t.PriorityType).SingleOrDefault(t => t.Id == todo.Id);
+            var todoInDb = _db.ToDos.SingleOrDefault(t => t.Id == todo.Id);
             todoInDb.Title = todo.Title;
             todoInDb.IsDone = todo.IsDone;
             todoInDb.Description = todo.Description;
