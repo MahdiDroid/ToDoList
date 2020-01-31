@@ -59,11 +59,7 @@ namespace ToDoList.Controllers
             {
                 var todoInDb = _db.ToDos.Include(t => t.PriorityType).SingleOrDefault(t => t.Id == todo.Id);
 
-                todoInDb.Title = todo.Title;
-                todoInDb.IsDone = todo.IsDone;
-                todoInDb.Description = todo.Description;
-                todoInDb.Date = todo.Date;
-                todoInDb.PriorityTypeId = todo.PriorityTypeId;
+
 
 
                 _db.ToDos.Add(todo);
@@ -96,21 +92,18 @@ namespace ToDoList.Controllers
 
         }
         [HttpPut]
-        public ActionResult Update(int id)
+        public ActionResult Update(ToDo todo)
         {
-            var todoInDb = _db.ToDos.SingleOrDefault(t => t.Id == id);
-            if (todoInDb == null)
-            {
-                HttpNotFound();
-            }
+            var todoInDb = _db.ToDos.Include(t=>t.PriorityType).SingleOrDefault(t => t.Id == todo.Id);
+            todoInDb.Title = todo.Title;
+            todoInDb.IsDone = todo.IsDone;
+            todoInDb.Description = todo.Description;
+            todoInDb.Date = todo.Date;
+            todoInDb.PriorityTypeId = todo.PriorityTypeId;
 
-            var pt = _db.PriorityTypes.ToList();
-            var priorityTypeVm = new PriorityTypeViewModel
-            {
-                Todo = todoInDb,
-                PriorityType = pt,
-            };
-            return View(priorityTypeVm);
+            _db.SaveChanges();
+
+            return RedirectToAction("Index","ToDo");
 
         }
         [HttpPut]
