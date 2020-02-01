@@ -39,15 +39,17 @@ namespace ToDoList.Controllers.Api
         }
 
         [HttpPost]
-        public ToDo Create(ToDo todo)
+        public ToDoDto Create(ToDoDto tododto)
         {
             if (!ModelState.IsValid)
             {
                 throw new HttpResponseException(HttpStatusCode.BadRequest);
             }
+            var todo = Mapper.Map<ToDoDto, ToDo>(tododto);
             db.ToDos.Add(todo);
             db.SaveChanges();
-            return todo;
+            tododto.Id = todo.Id;
+            return tododto;
         }
         
         [HttpPut]
