@@ -1,10 +1,12 @@
-﻿using System;
+﻿using AutoMapper;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using ToDoList.Data;
+using ToDoList.Dtos;
 
 namespace ToDoList.Controllers.Api
 {
@@ -19,10 +21,10 @@ namespace ToDoList.Controllers.Api
 
         //api/todoes
         [HttpGet]
-        public IEnumerable<ToDoDTO> ToDoes()
+        public IEnumerable<ToDoDto> ToDoes()
         {
             //return Ok(db.ToDos.ToList());
-            return db.ToDos.ToList();
+            return db.ToDos.ToList().Select(Mapper.Map<ToDo,ToDoDto>);
         }
 
         [HttpGet]
