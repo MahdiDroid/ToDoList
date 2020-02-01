@@ -7,7 +7,7 @@ using System.Web.Optimization;
 using System.Web.Routing;
 
 using System.Web.Http;
-
+using AutoMapper;
 
 namespace ToDoList
 {
@@ -15,7 +15,7 @@ namespace ToDoList
     {
         protected void Application_Start()
         {
-
+            Mapper.Initialize(t => t.AddProfile<MapperProfile>());
             GlobalConfiguration.Configure(WebApiConfig.Register);
             AreaRegistration.RegisterAllAreas();
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);

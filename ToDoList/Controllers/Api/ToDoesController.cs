@@ -19,7 +19,7 @@ namespace ToDoList.Controllers.Api
 
         //api/todoes
         [HttpGet]
-        public IEnumerable<ToDo> ToDoes()
+        public IEnumerable<ToDoDTO> ToDoes()
         {
             //return Ok(db.ToDos.ToList());
             return db.ToDos.ToList();

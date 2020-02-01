@@ -11,7 +11,10 @@ namespace ToDoList
     {
         public MapperProfile()
         {
+                             //source , destination
             Mapper.CreateMap<ToDo, ToDoDto>();
+            Mapper.CreateMap<ToDoDto,ToDo>();
+
         }
     }
 }
