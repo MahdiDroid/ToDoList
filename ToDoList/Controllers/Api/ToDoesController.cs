@@ -28,14 +28,14 @@ namespace ToDoList.Controllers.Api
         }
 
         [HttpGet]
-        public ToDo Todoes(int id)
+        public ToDoDto Todoes(int id)
         {
             var todo = db.ToDos.SingleOrDefault(t => t.Id == id);
             if (todo == null)
             {
                 throw new HttpResponseException(HttpStatusCode.BadRequest);
             }
-            return todo;
+            return Mapper.Map<ToDo,ToDoDto>(todo);
         }
 
         [HttpPost]
