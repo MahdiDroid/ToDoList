@@ -129,6 +129,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ToDoController.cs" />
+    <Compile Include="Controllers\ToDoesController.cs" />
     <Compile Include="Data\PriorityType.cs" />
     <Compile Include="Data\ToDo.cs" />
     <Compile Include="Global.asax.cs">
@@ -192,9 +193,15 @@
     <Content Include="Views\ToDo\Details.cshtml" />
     <Content Include="Views\ToDo\Update.cshtml" />
     <Content Include="Views\ToDo\Delete.cshtml" />
+    <Content Include="Views\ToDoes\Create.cshtml" />
+    <Content Include="Views\ToDoes\Delete.cshtml" />
+    <Content Include="Views\ToDoes\Details.cshtml" />
+    <Content Include="Views\ToDoes\Edit.cshtml" />
+    <Content Include="Views\ToDoes\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Controllers\Api\" />
     <Folder Include="Models\" />
     <Folder Include="Views\Add\" />
   </ItemGroup>
