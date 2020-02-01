@@ -46,6 +46,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AutoMapper, Version=4.1.0.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoMapper.4.1.0\lib\net45\AutoMapper.dll</HintPath>
+    </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.4.0\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
@@ -143,9 +146,11 @@
     <Compile Include="Controllers\ToDoesController.cs" />
     <Compile Include="Data\PriorityType.cs" />
     <Compile Include="Data\ToDo.cs" />
+    <Compile Include="Dtos\ToDoDto.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="MapperProfile.cs" />
     <Compile Include="Migrations\202001301402452_initial.cs" />
     <Compile Include="Migrations\202001301402452_initial.designer.cs">
       <DependentUpon>202001301402452_initial.cs</DependentUpon>
