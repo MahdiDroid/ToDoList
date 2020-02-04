@@ -53,17 +53,22 @@ namespace ToDoList.Controllers.Api
         }
         
         [HttpPut]
-        public IHttpActionResult Update(int id,ToDo todo)
+        public IHttpActionResult Update(int id,ToDoDto todoDto)
         {
             if (!ModelState.IsValid)
             {
                 throw new HttpResponseException(HttpStatusCode.BadRequest);
             }
+
             var todoInDb = db.ToDos.SingleOrDefault(t => t.Id == id);
             if (todoInDb == null)
             {
                 throw new HttpResponseException(HttpStatusCode.NotFound);
             }
+            var todo = Mapper.Map<ToDoDto, ToDo>(todoDto);
+
+            todoInDb.Title = todo.Title;
+
             todoInDb.IsDone = todo.IsDone;
             todoInDb.Description = todo.Description;
             todoInDb.PriorityTypeId = todo.PriorityTypeId;
